@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>b站-哔哩哔哩弹幕视频网_动画番剧_游戏直播_知识社区</title>
+<meta name="description" content="b站是中国年轻世代聚集的弹幕视频社区，提供动画番剧、游戏直播、知识科普、音乐舞蹈等丰富内容，支持弹幕互动、投币收藏与UP主创作，在这里找到兴趣相投的同好。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fb7299'/%3E%3Cpath d='M20 22l8 8M44 22l-8 8' stroke='%23fff' stroke-width='4' stroke-linecap='round'/%3E%3Crect x='14' y='28' width='36' height='22' rx='7' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Ccircle cx='25' cy='39' r='2.5' fill='%23fff'/%3E%3Ccircle cx='39' cy='39' r='2.5' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --pink:#fb7299;
+  --pink-deep:#e05c82;
+  --blue:#00a1d6;
+  --ink:#18191c;
+  --ink-2:#4b4d55;
+  --ink-3:#7d818c;
+  --line:#e8e9ed;
+  --bg:#f6f7f9;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px;}
+
+/* ---------- header ---------- */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{
+  display:flex;align-items:center;gap:28px;
+  height:64px;
+}
+.logo{
+  display:flex;align-items:center;gap:9px;
+  font-size:21px;font-weight:800;letter-spacing:.5px;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.logo .mark{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,var(--pink),#ff9ab7);
+  display:grid;place-items:center;
+  box-shadow:0 4px 12px rgba(251,114,153,.35);
+}
+.logo .mark svg{width:20px;height:20px;}
+nav.main{display:flex;gap:22px;font-size:14.5px;color:var(--ink-2);}
+nav.main a{padding:4px 0;border-bottom:2px solid transparent;transition:.2s;}
+nav.main a:hover{color:var(--pink);border-bottom-color:var(--pink);}
+.head-cta{
+  margin-left:auto;
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--pink);color:#fff;
+  font-size:14px;font-weight:600;
+  padding:8px 18px;border-radius:999px;
+  box-shadow:0 4px 14px rgba(251,114,153,.35);
+  transition:.2s;
+}
+.head-cta:hover{background:var(--pink-deep);transform:translateY(-1px);}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(900px 380px at 85% -10%,rgba(251,114,153,.16),transparent 70%),
+    radial-gradient(700px 320px at 5% 0%,rgba(0,161,214,.12),transparent 70%),
+    #fff;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:48px;align-items:center;
+  padding:64px 0 60px;
+}
+.hero h1{
+  font-size:clamp(34px,5vw,52px);
+  font-weight:800;
+  letter-spacing:-1px;
+  line-height:1.15;
+  color:var(--ink);
+}
+.hero h1 em{
+  font-style:normal;
+  color:var(--pink);
+}
+.hero .lead{
+  margin-top:18px;
+  font-size:16px;color:var(--ink-2);
+  max-width:34em;
+}
+.hero .lead b{color:var(--ink);font-weight:600;}
+.hero-actions{
+  margin-top:28px;
+  display:flex;flex-wrap:wrap;gap:12px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:15px;font-weight:600;
+  padding:11px 24px;border-radius:10px;
+  transition:.2s;
+}
+.btn-primary{background:var(--pink);color:#fff;box-shadow:0 6px 18px rgba(251,114,153,.35);}
+.btn-primary:hover{background:var(--pink-deep);transform:translateY(-1px);}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line);}
+.btn-ghost:hover{border-color:var(--pink);color:var(--pink);}
+.btn[data-download-placeholder="true"]{
+  pointer-events:none;
+  opacity:.95;
+}
+.hero-stats{
+  margin-top:32px;
+  display:flex;gap:34px;flex-wrap:wrap;
+}
+.hero-stats div strong{
+  display:block;font-size:22px;font-weight:800;color:var(--pink);
+}
+.hero-stats div span{font-size:12.5px;color:var(--ink-3);}
+
+.hero-art{
+  position:relative;
+  border-radius:20px;
+  background:linear-gradient(160deg,#ffeef3,#eaf7fc);
+  padding:26px;
+  box-shadow:0 18px 44px rgba(24,25,28,.08);
+}
+.hero-art .screen{
+  background:#fff;border-radius:14px;
+  padding:14px;
+  box-shadow:0 6px 20px rgba(24,25,28,.07);
+}
+.hero-art .bar{display:flex;gap:6px;margin-bottom:10px;}
+.hero-art .bar i{width:9px;height:9px;border-radius:50%;background:#ffd3df;}
+.hero-art .bar i:nth-child(2){background:#ffe6b8;}
+.hero-art .bar i:nth-child(3){background:#c9eaf5;}
+.hero-art .rows{display:grid;gap:9px;}
+.hero-art .row{
+  display:flex;align-items:center;gap:10px;
+  background:#fafafc;border-radius:9px;padding:9px 11px;
+}
+.hero-art .row .dot{
+  width:26px;height:26px;border-radius:7px;flex:none;
+  background:linear-gradient(135deg,var(--pink),#ffb3c9);
+}
+.hero-art .row:nth-child(2) .dot{background:linear-gradient(135deg,var(--blue),#7fd6f0);}
+.hero-art .row:nth-child(3) .dot{background:linear-gradient(135deg,#f0a33c,#ffd48a);}
+.hero-art .row .ln{height:7px;border-radius:4px;background:#e9eaf0;}
+.hero-art .row .ln.s{width:44%;}
+.hero-art .row .ln.l{width:70%;}
+.hero-art .row .ln.x{width:30%;margin-top:5px;background:#f1f2f6;}
+.hero-art .tag{
+  position:absolute;right:-6px;top:-12px;
+  background:var(--ink);color:#fff;
+  font-size:12px;font-weight:600;
+  padding:6px 13px;border-radius:999px;
+  box-shadow:0 6px 16px rgba(24,25,28,.2);
+}
+
+/* ---------- section base ---------- */
+section{padding:64px 0;}
+.sec-head{margin-bottom:34px;}
+.sec-head h2{
+  font-size:clamp(22px,3vw,28px);
+  font-weight:800;letter-spacing:-.4px;
+}
+.sec-head p{margin-top:8px;color:var(--ink-3);font-size:14.5px;max-width:44em;}
+.sec-head .kicker{
+  display:inline-block;
+  font-size:12.5px;font-weight:700;letter-spacing:1.5px;
+  color:var(--pink);text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+/* ---------- zones ---------- */
+.zones{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.zone-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.zone{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px 22px;
+  background:#fff;
+  transition:.22s;
+}
+.zone:hover{border-color:#ffd0dd;box-shadow:0 12px 28px rgba(251,114,153,.1);transform:translateY(-3px);}
+.zone .ico{
+  width:42px;height:42px;border-radius:11px;
+  display:grid;place-items:center;margin-bottom:14px;
+}
+.zone .ico svg{width:22px;height:22px;}
+.zone:nth-child(1) .ico{background:#ffeef3;}
+.zone:nth-child(2) .ico{background:#e6f6fc;}
+.zone:nth-child(3) .ico{background:#fff4e2;}
+.zone:nth-child(4) .ico{background:#eef1ff;}
+.zone:nth-child(5) .ico{background:#eafaf1;}
+.zone:nth-child(6) .ico{background:#fdeefb;}
+.zone h3{font-size:16.5px;font-weight:700;margin-bottom:8px;}
+.zone p{font-size:14px;color:var(--ink-2);line-height:1.7;}
+
+/* ---------- feature split ---------- */
+.split{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:56px;align-items:center;
+}
+.split .txt h2{
+  font-size:clamp(22px,3vw,28px);font-weight:800;
+  letter-spacing:-.4px;margin-bottom:14px;
+}
+.split .txt p{color:var(--ink-2);font-size:15px;margin-bottom:14px;}
+.split .txt p b{color:var(--ink);}
+.checklist{list-style:none;display:grid;gap:11px;margin-top:6px;}
+.checklist li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:14.5px;color:var(--ink-2);
+}
+.checklist li::before{
+  content:"";
+  flex:none;width:18px;height:18px;margin-top:4px;border-radius:50%;
+  background:var(--pink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E") center/11px no-repeat;
+}
+.danmu-box{
+  background:#fff;border:1px solid var(--line);
+  border-radius:18px;padding:20px;
+  box-shadow:0 14px 34px rgba(24,25,28,.07);
+}
+.danmu-box .head{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;color:var(--ink-3);margin-bottom:14px;
+}
+.danmu-box .head strong{color:var(--ink);font-size:14px;}
+.player{
+  position:relative;border-radius:12px;overflow:hidden;
+  aspect-ratio:16/9;
+  background:linear-gradient(135deg,#2b2e3a,#414togo 100%);
+  background:linear-gradient(135deg,#2b2e3a,#4a4e5e);
+  display:grid;place-items:center;
+}
+.player .play{
+  width:54px;height:54px;border-radius:50%;
+  background:rgba(251,114,153,.92);
+  display:grid;place-items:center;
+  box-shadow:0 6px 20px rgba(251,114,153,.5);
+}
+.player .play svg{width:22px;height:22px;margin-left:3px;}
+.dm{
+  position:absolute;font-size:12px;font-weight:600;color:#fff;
+  background:rgba(0,0,0,.32);padding:3px 9px;border-radius:999px;
+  white-space:nowrap;
+}
+.dm.a{top:14%;left:6%;}
+.dm.b{top:34%;right:8%;background:rgba(251,114,153,.85);}
+.dm.c{top:56%;left:14%;}
+.dm.d{bottom:20%;right:16%;}
+.dm.e{bottom:36%;left:40%;background:rgba(0,161,214,.85);}
+
+/* ---------- topics ---------- */
+.topics{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.topic-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.topic{
+  border:1px solid var(--line);border-radius:14px;
+  padding:18px;background:#fff;transition:.2s;
+}
+.topic:hover{border-color:#ffd0dd;background:#fffafb;}
+.topic .tno{
+  font-size:12px;font-weight:800;color:var(--pink);letter-spacing:1px;
+}
+.topic h3{font-size:15.5px;font-weight:700;margin:6px 0 6px;}
+.topic p{font-size:13px;color:var(--ink-3);line-height:1.65;}
+
+/* ---------- faq ---------- */
+.faq-list{display:grid;gap:12px;max-width:860px;}
+details{
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:0 20px;transition:.2s;
+}
+details[open]{border-color:#ffd0dd;box-shadow:0 8px 22px rgba(251,114,153,.08);}
+summary{
+  cursor:pointer;list-style:none;
+  padding:16px 0;font-size:15px;font-weight:600;color:var(--ink);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{
+  content:"+";font-size:20px;font-weight:400;color:var(--pink);line-height:1;
+  transition:.2s;
+}
+details[open] summary::after{content:"–";}
+details p{
+  padding:0 0 18px;font-size:14px;color:var(--ink-2);
+  border-top:1px dashed var(--line);padding-top:14px;
+}
+
+/* ---------- cta band ---------- */
+.band{
+  background:linear-gradient(120deg,#fb7299,#ff9ab7 55%,#ffc2d4);
+  border-radius:22px;
+  padding:46px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:28px;flex-wrap:wrap;
+  color:#fff;
+  box-shadow:0 20px 46px rgba(251,114,153,.3);
+}
+.band h2{font-size:clamp(21px,3vw,27px);font-weight:800;letter-spacing:-.3px;}
+.band p{margin-top:8px;font-size:14.5px;opacity:.92;max-width:38em;}
+.band .btn-white{
+  background:#fff;color:var(--pink-deep);
+  font-weight:700;font-size:15px;
+  padding:12px 26px;border-radius:10px;
+  white-space:nowrap;transition:.2s;
+}
+.band .btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.15);}
+
+/* ---------- footer ---------- */
+footer.site{
+  background:#fff;border-top:1px solid var(--line);
+  padding:48px 0 32px;margin-top:8px;
+}
+.foot-top{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:36px;padding-bottom:32px;border-bottom:1px solid var(--line);
+}
+.foot-brand .logo{font-size:19px;margin-bottom:12px;}
+.foot-brand p{font-size:13.5px;color:var(--ink-3);line-height:1.8;max-width:26em;}
+.foot-col h4{font-size:13.5px;font-weight:700;margin-bottom:12px;color:var(--ink);}
+.foot-col a{
+  display:block;font-size:13.5px;color:var(--ink-3);
+  padding:4px 0;transition:.2s;
+}
+.foot-col a:hover{color:var(--pink);}
+.foot-bottom{
+  padding-top:22px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--ink-3);
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:36px;padding:48px 0 44px;}
+  .hero-art{max-width:460px;}
+  .zone-grid{grid-template-columns:repeat(2,1fr);}
+  .topic-grid{grid-template-columns:repeat(2,1fr);}
+  .split{grid-template-columns:1fr;gap:32px;}
+  .foot-top{grid-template-columns:1fr 1fr;gap:28px;}
+  nav.main{display:none;}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px;}
+  section{padding:46px 0;}
+  .zone-grid{grid-template-columns:1fr;}
+  .topic-grid{grid-template-columns:1fr;}
+  .foot-top{grid-template-columns:1fr;}
+  .hero-stats{gap:22px;}
+  .band{padding:32px 24px;border-radius:18px;}
+  .head-inner{height:58px;gap:14px;}
+  .head-cta{padding:7px 14px;font-size:13px;}
+  .logo{font-size:19px;}
+  details{padding:0 16px;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top" aria-label="b站首页">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 4l3 3M17 4l-3 3"/>
+          <rect x="4" y="8" width="16" height="11" rx="3"/>
+          <circle cx="9.5" cy="13.5" r="1" fill="#fff" stroke="none"/>
+          <circle cx="14.5" cy="13.5" r="1" fill="#fff" stroke="none"/>
+        </svg>
+      </span>
+      b站
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#zones">内容分区</a>
+      <a href="#danmu">弹幕互动</a>
+      <a href="#topics">热门专题</a>
+      <a href="#faq">常见疑问</a>
+    </nav>
+    <a class="head-cta" href="#start">立即逛逛</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1>b站</h1>
+        <p class="lead">b站是年轻世代聚集的弹幕视频社区。在这里，<b>动画番剧、游戏实况、知识科普、音乐舞蹈</b>汇聚一堂，一条弹幕、一次投币，都可能遇见兴趣相投的同好。</p>
+        <div class="hero-actions" id="start">
+          <a class="btn btn-primary" href="#zones">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            浏览内容分区
+          </a>
+          <a class="btn btn-ghost" href="#danmu">了解弹幕互动</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>6</strong><span>大内容分区</span></div>
+          <div><strong>弹幕</strong><span>实时互动体验</span></div>
+          <div><strong>UP主</strong><span>原创内容创作</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <span class="tag">正在播放</span>
+        <div class="screen">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="rows">
+            <div class="row"><span class="dot"></span><div><div class="ln l"></div><div class="ln x"></div></div></div>
+            <div class="row"><span class="dot"></span><div><div class="ln s"></div><div class="ln x"></div></div></div>
+            <div class="row"><span class="dot"></span><div><div class="ln l"></div><div class="ln x"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONES -->
+  <section class="zones" id="zones">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Content Zones</span>
+        <h2>从动画到知识，六大内容分区</h2>
+        <p>b站的内容按兴趣划分为若干分区，每个分区都有自己的观看习惯与社区氛围。以下分区覆盖了大多数访问者进入b站最常寻找的内容方向。</p>
+      </div>
+      <div class="zone-grid">
+        <article class="zone">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fb7299" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z" fill="#fb7299" stroke="none"/></svg></span>
+          <h3>动画番剧</h3>
+          <p>新番同步与经典补番，追番列表可长期保存进度，配合弹幕一起看更有氛围。</p>
+        </article>
+        <article class="zone">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#00a1d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="4"/><circle cx="8" cy="12.5" r="1.2" fill="#00a1d6" stroke="none"/><circle cx="16" cy="12.5" r="1.2" fill="#00a1d6" stroke="none"/></svg></span>
+          <h3>游戏实况</h3>
+          <p>单机通关、竞技解说与整活挑战，游戏区的视频与直播是b站重要的实时内容来源。</p>
+        </article>
+        <article class="zone">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e89a2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h13"/></svg></span>
+          <h3>知识科普</h3>
+          <p>从数理基础到人文历史，知识区聚集了大量长视频与系列课程，适合系统学习。</p>
+        </article>
+        <article class="zone">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#5b64d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>
+          <h3>音乐现场</h3>
+          <p>原创翻唱、器乐演奏与现场Live，音乐区常出现播放量很高的原创作品与二创。</p>
+        </article>
+        <article class="zone">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2eae74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
+          <h3>生活记录</h3>
+          <p>美食、旅行、日常Vlog与手作过程，生活区的节奏更放松，适合碎片时间观看。</p>
+        </article>
+        <article class="zone">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d64fa6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.5L20 9.5l-4 4 1 6-5-3-5 3 1-6-4-4 5.4-1z"/></svg></span>
+          <h3>影视杂谈</h3>
+          <p>影评、拉片与混剪，影视区把观看体验延伸到解读层面，评论区常有补充讨论。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DANMU -->
+  <section id="danmu">
+    <div class="wrap split">
+      <div class="txt">
+        <h2>弹幕：b站最有辨识度的互动方式</h2>
+        <p>弹幕让观看不再是一个人的事。视频播放时，其他人的评论会从画面上方飘过，<b>同一时刻的观众情绪被压缩在同一帧画面里</b>，这也是b站社区感的重要来源。</p>
+        <p>除了发送与开关弹幕，b站还提供了投币、收藏、充电与关注UP主等互动入口，这些行为共同构成了站内的内容反馈机制。对于新访问者，建议先从关闭弹幕看一遍、再打开弹幕看一遍，感受两种不同的观看节奏。</p>
+        <ul class="checklist">
+          <li>弹幕可随时开关，并支持按类型或关键词过滤</li>
+          <li>投币与收藏用于表达对作品的认可，收藏便于回看</li>
+          <li>关注UP主后，新投稿会出现在动态与关注列表</li>
+          <li>评论区与弹幕互补，长讨论通常沉淀在评论区</li>
+        </ul>
+      </div>
+      <div class="danmu-box">
+        <div class="head"><strong>弹幕演示</strong><span>示意画面</span></div>
+        <div class="player" role="img" aria-label="弹幕播放器示意图">
+          <span class="dm a">前方高能</span>
+          <span class="dm b">这次真的燃</span>
+          <span class="dm c">收藏了慢慢看</span>
+          <span class="dm d">已投币</span>
+          <span class="dm e">名场面预定</span>
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5l12 7-12 7z"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section class="topics" id="topics">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Hot Topics</span>
+        <h2>近期值得一看的专题方向</h2>
+        <p>专题把分散的投稿组织成一条观看线索。以下方向适合作为第一次进入b站的浏览起点，也可以作为长期收藏的清单。</p>
+      </div>
+      <div class="topic-grid">
+        <article class="topic">
+          <span class="tno">01</span>
+          <h3>新番追更</h3>
+          <p>按季度整理的新番列表，搭配追番提醒，避免错过更新。</p>
+        </article>
+        <article class="topic">
+          <span class="tno">02</span>
+          <h3>硬核科普</h3>
+          <p>长视频为主，单集时长较长，适合安排整块时间观看。</p>
+        </article>
+        <article class="topic">
+          <span class="tno">03</span>
+          <h3>游戏整活</h3>
+          <p>挑战、速通与梗文化剪辑，节奏快，弹幕互动密集。</p>
+        </article>
+        <article class="topic">
+          <span class="tno">04</span>
+          <h3>原创音乐</h3>
+          <p>翻唱与原创并存，评论区常能看到创作者本人的回复。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Questions</span>
+        <h2>新访客常见疑问</h2>
+        <p>第一次接触b站时，以下几个问题最常被提起。回答基于站内公开的常规功能描述。</p>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>不注册账号能看视频吗？</summary>
+          <p>可以。大部分视频支持未登录观看，但发送弹幕、投币、收藏和关注UP主等互动功能通常需要登录账号后才能使用。</p>
+        </details>
+        <details>
+          <summary>弹幕太吵怎么办？</summary>
+          <p>播放器提供弹幕开关，也可以调整弹幕密度、透明度和显示区域。遇到密集刷屏时，临时关闭弹幕是最直接的方式。</p>
+        </details>
+        <details>
+          <summary>b站的内容只有二次元吗？</summary>
+          <p>不是。动画与番剧是b站早期的重要内容，但如今知识、游戏、生活、影视等分区同样活跃，内容范围已经明显拓宽。</p>
+        </details>
+        <details>
+          <summary>怎么找到持续更新的UP主？</summary>
+          <p>在视频页点击关注即可，之后新投稿会出现在关注动态中。也可以进入UP主主页查看投稿合集与系列列表。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND -->
+  <section>
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>从一条弹幕开始，认识b站</h2>
+          <p>挑一个感兴趣的分区，打开一个视频，把弹幕打开看一遍。b站的内容生态就是在这样的观看与互动中逐渐展开的。</p>
+        </div>
+        <a class="btn-white" href="#zones">回到内容分区</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="logo">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 4l3 3M17 4l-3 3"/>
+              <rect x="4" y="8" width="16" height="11" rx="3"/>
+              <circle cx="9.5" cy="13.5" r="1" fill="#fff" stroke="none"/>
+              <circle cx="14.5" cy="13.5" r="1" fill="#fff" stroke="none"/>
+            </svg>
+          </span>
+          b站
+        </span>
+        <p>b站是以弹幕视频为核心的社区平台，内容涵盖动画、游戏、知识、音乐、生活与影视等分区，支持弹幕互动、投币收藏与UP主创作。</p>
+      </div>
+      <div class="foot-col">
+        <h4>内容导航</h4>
+        <a href="#zones">内容分区</a>
+        <a href="#danmu">弹幕互动</a>
+        <a href="#topics">热门专题</a>
+      </div>
+      <div class="foot-col">
+        <h4>新手指引</h4>
+        <a href="#faq">常见疑问</a>
+        <a href="#start">开始浏览</a>
+        <a href="#top">回到顶部</a>
+      </div>
+      <div class="foot-col">
+        <h4>客户端</h4>
+        <a href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+        <a href="#zones">分区速览</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>b站 · 弹幕视频社区主题首页</span>
+      <span>页面内容为社区功能介绍，具体功能以站内实际页面为准</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+  </html>
